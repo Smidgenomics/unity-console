@@ -5,11 +5,11 @@
   "description": "Runtime Dev Console",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Smidgens/unity-console.git"
+    "url": "git+https://github.com/Smidgenomics/unity-console.git"
   },
   "author": {
     "name": "Smidgenomics",
-    "url": "https://github.com/Smidgens"
+    "url": "https://github.com/Smidgenomics"
   },
   "keywords": [
     "console",
