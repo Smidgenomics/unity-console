@@ -2,7 +2,8 @@
   "name": "com.smidgenomics.unity-console",
   "version": "0.4.0",
   "displayName": "SM Console",
-  "description": "Runtime Dev Console",
+  "description": "Runtime dev cmd and output console",
+  "license": "MIT NON-AI",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Smidgenomics/unity-console.git"
@@ -18,5 +19,8 @@
     "runtime-console",
     "smidgenomics"
   ],
-  "unity": "2023.3"
+  "unity": "2023.2",
+  "documentationUrl": "https://github.com/Smidgenomics/unity-console",
+  "licensesUrl": "https://github.com/Smidgenomics/unity-console/blob/master/LICENSE.md",
+  "unityRelease": "22f1"
 }
