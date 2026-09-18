@@ -32,7 +32,7 @@ namespace Smidgenomics.Unity.Console
 			onLogAdded?.Invoke(log);
 		}
 
-		public void Clear()
+		public void ClearLog()
 		{
 			_items.Clear();
 			onLogsCleared?.Invoke();

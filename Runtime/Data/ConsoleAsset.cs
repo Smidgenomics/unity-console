@@ -30,7 +30,7 @@ namespace Smidgenomics.Unity.Console
 
 		private static void InitStart(ConsoleAsset c)
 		{
-			c._console.Clear();
+			c._console.ClearLog();
 			c._console.InitDefaultCommands(c._settings.builtInCommands);
 			c._console.FindAssemblyCommands();
 
@@ -55,10 +55,10 @@ namespace Smidgenomics.Unity.Console
 			_console.Unbind(cmd);
 		}
 
-		internal void Clear()
-		{
-			_console.Clear();
-		}
+		// internal void Clear()
+		// {
+		// 	_console.Clear();
+		// }
 
 		private static void NoOp<T>(T _) { }
 	}

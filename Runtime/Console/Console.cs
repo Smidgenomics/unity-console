@@ -26,9 +26,9 @@ namespace Smidgenomics.Unity.Console
 		public IConsoleLog Log => _log;
 
 		internal void AddLog(string text, ELogType type = 0, long category = 0) => _log.Append(text, type, category);
-		public void Clear()
+		private void Clear()
 		{
-			_log.Clear();
+			_log.ClearLog();
 		}
 
 		public void Exec(string input)

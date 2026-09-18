@@ -133,7 +133,7 @@ namespace Smidgenomics.Unity.Console
 
 		private void OnClearButton()
 		{
-			Console?.Clear();
+			Console.ClearLog();
 		}
 
 		private void OnCloseButton()
@@ -215,7 +215,7 @@ namespace Smidgenomics.Unity.Console
 				RegisterCallback<MouseEnterEvent>(OnMouseEnter);
 				RegisterCallback<MouseLeaveEvent>(OnMouseLeave);
 				RegisterCallback<FocusEvent>(OnFocus);
-				Console.Clear();
+				Console.ClearLog();
 				Console.Init();
 				if (panel != null)
 				{

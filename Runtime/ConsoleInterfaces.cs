@@ -47,6 +47,8 @@ namespace Smidgenomics.Unity.Console
 		public event Action onLogsCleared;
 		public event LogAddedEvent onLogAdded;
 
+		public void ClearLog();
+
 		/// <summary>
 		/// Number of items
 		/// </summary>
