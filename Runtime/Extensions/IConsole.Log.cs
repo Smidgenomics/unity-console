@@ -23,6 +23,11 @@ namespace Smidgenomics.Unity.Console
 		{
 			console.Log.Append(msg, ELogType.Info, category);
 		}
+
+		public static void LogExpression(this IConsole console, string msg, long category = 0)
+		{
+			console.Log.Append(msg, ELogType.Expression, category);
+		}
 		
 		public static void LogSuccess(this IConsole console, string msg, long category = 0)
 		{

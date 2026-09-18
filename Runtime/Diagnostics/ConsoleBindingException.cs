@@ -10,7 +10,7 @@ namespace Smidgenomics.Unity.Console
 	/// Error binding command to console
 	/// </summary>
 	[System.Serializable]
-	public sealed class ConsoleBindingException : Exception
+	public sealed class ConsoleBindingException : ConsoleException
 	{
 		public ConsoleBindingException()
 		{

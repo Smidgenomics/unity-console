@@ -9,7 +9,7 @@ namespace Smidgenomics.Unity.Console
 	[Serializable]
 	internal sealed class CommandBindingRef
 	{
-		public bool IsBound => _handle != CommandHandle.Empty && _console != null;
+		public bool IsBound => _handle != null && _handle.IsValid && _console != null;
 
 		public void Bind(IConsole c)
 		{
@@ -22,8 +22,12 @@ namespace Smidgenomics.Unity.Console
 
 		public void Unbind()
 		{
-			if (!IsBound) { return; }
-			_console.Unbind(_handle);
+			if (!IsBound)
+			{
+				return;
+			}
+			_handle.Unbind();
+			_handle = CommandHandle.Empty;
 			_console = null;
 		}
 

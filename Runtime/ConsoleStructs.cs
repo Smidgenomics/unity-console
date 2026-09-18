@@ -9,7 +9,7 @@ namespace Smidgenomics.Unity.Console
 	[Serializable]
 	public struct ConsoleLogItem
 	{
-		public static readonly ConsoleLogItem Empty = new ("", default);
+		public static readonly ConsoleLogItem Empty = new (string.Empty, default);
 
 		[CreateProperty] internal string Text => text;
 		[CreateProperty] internal string Timestamp { get; }
@@ -104,7 +104,7 @@ namespace Smidgenomics.Unity.Console
 
 namespace Smidgenomics.Unity.Console
 {
-	internal struct CommandRequest
+	internal ref struct CommandRequest
 	{
 		public string keyword;
 		public ECommandType type;
@@ -167,5 +167,46 @@ namespace Smidgenomics.Unity.Console
 		[ToggleEnum]
 		public EDefaultConsoleCommand builtInCommands;
 
+	}
+}
+
+namespace Smidgenomics.Unity.Console
+{
+	using System;
+	using UnityEngine;
+	using System.Runtime.InteropServices;
+
+	public ref struct ConsoleArg
+	{
+		public readonly Type type;
+		public ConsoleArgValue value;
+		public bool IsSet => type != null;
+		internal delegate void SetFn(ref ConsoleArgValue v);
+
+		internal static ConsoleArg FromValue<T>(SetFn fn)
+		{
+			ConsoleArgValue val = new();
+			fn.Invoke(ref val);
+			return new ConsoleArg(typeof(T), val);
+		}
+
+		public ConsoleArg(Type t, ConsoleArgValue v)
+		{
+			value = v;
+			type = t;
+		}
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public struct ConsoleArgValue
+	{
+		[FieldOffset(0)] public object objectRef;
+		[FieldOffset(0)] public int intValue;
+		[FieldOffset(0)] public bool boolValue;
+		[FieldOffset(0)] public float floatValue;
+		[FieldOffset(0)] public Vector2 vector2Value;
+		[FieldOffset(0)] public Vector3 vector3Value;
+		[FieldOffset(0)] public Vector4 vector4Value;
+		[FieldOffset(0)] public Color colorValue;
 	}
 }

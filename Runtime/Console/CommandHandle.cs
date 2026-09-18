@@ -7,33 +7,31 @@ namespace Smidgenomics.Unity.Console
 	/// <summary>
 	/// Reference to bound console handler
 	/// </summary>
-	public readonly struct CommandHandle : IEquatable<CommandHandle>
+	public sealed class CommandHandle
 	{
-		public static readonly CommandHandle Empty = default;
+		public static readonly CommandHandle Empty = new(0, null);
 
-		public bool IsValid => _valid == 1;
+		public bool IsValid => _unbindFn != null;
+		internal ulong Key { get; private set; }
 
-		public override bool Equals(object obj)
+		public void Unbind()
 		{
-			if (obj is not CommandHandle handle)
-			{
-				return false;
-			}
-			return handle._key == _key;
+			_unbindFn?.Invoke(Key);
+			_unbindFn = null;
 		}
 
-		public override int GetHashCode() => _key.GetHashCode();
-		public bool Equals(CommandHandle other) => _key == other._key;
-		public static bool operator ==(CommandHandle l, CommandHandle r) => l.Equals(r);
-		public static bool operator !=(CommandHandle l, CommandHandle r) => !(l == r);
-
-		internal CommandHandle(uint v)
+		internal void Invalidate()
 		{
-			_key = v;
-			_valid = 1;
+			_unbindFn = null;
+			Key = 0;
 		}
 
-		private readonly uint _key;
-		private readonly byte _valid;
+		internal CommandHandle(ulong key, Action<ulong> unbindFn)
+		{
+			Key = key;
+			_unbindFn = unbindFn;
+		}
+
+		private Action<ulong> _unbindFn;
 	}
 }

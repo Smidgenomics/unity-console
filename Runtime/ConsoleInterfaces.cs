@@ -24,11 +24,6 @@ namespace Smidgenomics.Unity.Console
 			object ctx,
 			string description
 		);
-		
-		/// <summary>
-		/// Unbind command
-		/// </summary>
-		public void Unbind(in CommandHandle cmd);
 	}
 }
 
@@ -69,14 +64,4 @@ namespace Smidgenomics.Unity.Console
 		/// </summary>
 		public void Append(string msg, ELogType type, long category);
 	}
-}
-
-public interface IName
-{
-	public string Name { get; }
-}
-
-public interface IOrder
-{
-	public int Order { get; }
 }

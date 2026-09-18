@@ -50,10 +50,14 @@ namespace Smidgenomics.Unity.Console
 		None = 0,
 		[InspectorName("clear")] Clear = 1,
 		[InspectorName("list")] List = 2,
-		[InspectorName("list (filter)")] ListWildcard = 4,
+		
+		// [Obsolete]
+		// [InspectorName("[Deprecated] list (filter)")] ListWildcard = 4,
 		[InspectorName("describe (command)")] Describe = 8,
 		[InspectorName("inspect (variable)")] Inspect = 16,
-		[InspectorName("exec (file)")] Exec = 32,
+		
+		// [Obsolete]
+		// [InspectorName("[Deprecated] exec (file)")] Exec = 32,
 		All = ~0
 	}
 	

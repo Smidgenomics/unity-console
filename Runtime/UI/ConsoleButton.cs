@@ -31,12 +31,17 @@ namespace Smidgenomics.Unity.Console
 
 		public ConsoleButton()
 		{
-			AddToClassList("sm-console__toolbar__button");
-			AddToClassList("sm-console__toolbar__item");
-			text = "";
+			this.AddClasses(_BUTTON_CLASSES);
+			text = string.Empty;
 		}
 
 		private Image _icon;
+
+		private static readonly string[] _BUTTON_CLASSES =
+		{
+			"sm-console__toolbar__button",
+			"sm-console__toolbar__item"
+		};
 
 		private Image GetIconImage()
 		{
